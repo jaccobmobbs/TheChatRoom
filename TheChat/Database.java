@@ -26,7 +26,9 @@ public class Database {
 
    public boolean valid(String user, String pass) {
    		try{
-   			String strSelect = "select * from account where username = '" + user + "\' and password = '" + pass + "'";
+            username = user.split("\";'")
+            password = pass.split("\";'")
+            String strSelect = "select * from account where username = '" + username[0] + "\' and password = '" + password + "'";
 	   		ResultSet rset = stmt.executeQuery(strSelect);
 	   		if (!rset.isBeforeFirst() ) {
 	   		    return false;
